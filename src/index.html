@@ -1,17 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+  <title>Mad Lib Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #5c6bc0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5c6bc0;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 12px);
+      padding: 6px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #5c6bc0;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #3949ab;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
 </head>
-
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
+  <div class="container">
+    <h1>Mad Lib Form</h1>
+    <form action="/cs212/lab7" method="POST">
+      <label for="noun1">Noun 1:</label>
+      <input type="text" id="noun1" name="noun1" required><br>
 
+      <label for="adjective1">Adjective 1:</label>
+      <input type="text" id="adjective1" name="adjective1" required><br>
+
+      <label for="verb1">Verb 1:</label>
+      <input type="text" id="verb1" name="verb1" required><br>
+
+      <label for="noun2">Noun 2:</label>
+      <input type="text" id="noun2" name="noun2" required><br>
+
+      <label for="adjective2">Adjective 2:</label>
+      <input type="text" id="adjective2" name="adjective2" required><br>
+
+      <input type="submit" value="Generate Mad Lib">
+    </form>
+    <button id="randomWordsButton">Random Words</button>
+  </div>
+
+  <script>
+    const nouns = ['cat', 'dog', 'house', 'tree', 'car'];
+    const adjectives = ['big', 'happy', 'green', 'funny', 'loud'];
+    const verbs = ['run', 'jump', 'eat', 'sleep', 'dance'];
+
+    document.getElementById('randomWordsButton').addEventListener('click', () => {
+      document.getElementById('noun1').value = getRandomWord(nouns);
+      document.getElementById('adjective1').value = getRandomWord(adjectives);
+      document.getElementById('verb1').value = getRandomWord(verbs);
+      document.getElementById('noun2').value = getRandomWord(nouns);
+      document.getElementById('adjective2').value = getRandomWord(adjectives);
+    });
+
+    function getRandomWord(wordArray) {
+      return wordArray[Math.floor(Math.random() * wordArray.length)];
+    }
+  </script>
+</body>
 </html>
