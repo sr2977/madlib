@@ -11,12 +11,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // GET route to serve the HTML form
-app.get('madlib/ITC505/Lab7/public', (req, res) => {
+app.get('madlib/ITC505/Lab7', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // POST route for handling form submission
-app.post('madlib/ITC505/Lab7/public', (req, res) => {
+app.post('madlib/ITC505/Lab7', (req, res) => {
   const { noun1, adjective1, verb1, noun2, adjective2 } = req.body;
 
   const madLib = `Once upon a time, a ${adjective1} ${noun1} decided to ${verb1} with a ${adjective2} ${noun2}.`;
